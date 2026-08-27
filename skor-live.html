@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W : L</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{background:transparent;overflow:hidden;font-family:sans-serif}
+        .kotak{position:fixed;top:20px;left:50%;transform:translateX(-50%);display:flex;gap:15px;padding:12px 25px;background:rgba(0,0,0,0.6);border-radius:10px;border:3px solid #fff}
+        .bagian{text-align:center;color:#fff}
+        .label{font-size:18px;font-weight:bold}
+        .angka{font-size:45px;font-weight:bold;text-shadow:2px 2px 4px rgba(0,0,0,0.8)}
+        #w{color:#00FF88}
+        #l{color:#FF4444}
+    </style>
+</head>
+<body>
+    <div class="kotak">
+        <div class="bagian"><div class="label">W</div><div class="angka" id="nilaiW">0</div></div>
+        <div class="bagian"><div class="label">:</div><div class="angka" style="color:#FFF">:</div></div>
+        <div class="bagian"><div class="label">L</div><div class="angka" id="nilaiL">0</div></div>
+    </div>
+    <script>
+        const sumber = "https://MERSZ.github.io/teks-camerafi/data.txt";
+        function ambilSkor(){fetch(sumber+"?v="+Date.now()).then(r=>r.text()).then(isi=>{let b=isi.trim().split(",");document.getElementById("nilaiW").innerText=b[0]||"0";document.getElementById("nilaiL").innerText=b[1]||"0"})}
+        ambilSkor();setInterval(ambilSkor,3000);
+    </script>
+</body>
+</html>
